@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -46,6 +47,7 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
     MatInputModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatGridListModule,
     LayoutModule,
     MatToolbarModule,
