@@ -1,1 +1,68 @@
-<p>usuario works!</p>
+<h1 style="margin: 20px 0px 0px 40px">Usuarios</h1>
+
+<mat-card style="margin: 20px 40px 40px 40px">
+    <mat-card-title>
+        <button mat-raised-button color="primary" (click)="nuevoUsuario()">
+            <mat-icon>add</mat-icon>
+            Nuevo Usuario
+        </button>
+    </mat-card-title>
+</mat-card>
+
+<mat-divider></mat-divider>
+
+<mat-card-content class="dashboard-card-content">
+    <mat-form-field appearence="standard">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="aplicarFiltroTabla($event)" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z2">
+        <table mat-table [dataSource]="dataListaUsuarios">
+
+            <ng-container matColumnDef="nombreCompleto">
+                <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
+                <td mat-cell *matCellDef="let usuario"> {{usuario.nombreCompleto}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="correo">
+                <th mat-header-cell *matHeaderCellDef> Correo </th>
+                <td mat-cell *matCellDef="let usuario"> {{usuario.correo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="rolDescripcion">
+                <th mat-header-cell *matHeaderCellDef> Rol </th>
+                <td mat-cell *matCellDef="let usuario"> {{usuario.rolDescripcion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let usuario"> {{usuario.esActivo ? 'Activo' : 'No Activo'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef style="width:80px"> Acciones </th>
+                <td mat-cell *matCellDef="let usuario">
+                    <button mat-icon-button color="primary" (click)="editarUsuario(usuario)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="eliminarUsuario(usuario)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnaTabla"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnaTabla;"></tr>
+
+            <tr class="mat-row" *matNoDataRow=>
+                <td class="mat-cell" colspan="4">No se encontraron resultados que coincidan con "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+    </div>
+
+</mat-card-content>
