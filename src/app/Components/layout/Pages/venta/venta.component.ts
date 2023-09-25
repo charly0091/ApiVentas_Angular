@@ -91,6 +91,7 @@ export class VentaComponent {
       totalTexto: String(_total.toFixed(2))
     });
 
+
     this.datosDetalleVenta = new MatTableDataSource(this.listaProductosParaVenta);
     this.formularioProductoVenta.patchValue({
       producto: '',
@@ -117,6 +118,7 @@ export class VentaComponent {
         totalTexto: String(this.totalPagar.toFixed(2)),
         detalleVenta: this.listaProductosParaVenta
       }
+
 
       this._ventaServicio.registrar(request).subscribe({
         next: response => {
